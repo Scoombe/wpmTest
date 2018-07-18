@@ -1,3 +1,5 @@
+![image](https://travis-ci.org/Scoombe/wpmTest.svg?branch=master)
+
 # wpmTest
 A class for a words per minutes test. 
 
