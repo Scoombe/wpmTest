@@ -1,0 +1,42 @@
+{
+  "name": "wpmtest",
+  "version": "1.0.0",
+  "description": "A simple class for a words per minute test.",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha -r ts-node/register test/*.test.ts",
+    "build": "tsc -p tsconfig.json"
+  },
+  "pre-commit": [
+    "test",
+    "build"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "http://www.github.com/scoombe/wpmTest"
+  },
+  "keywords": [
+    "wpm",
+    "word",
+    "per",
+    "minute",
+    "test"
+  ],
+  "author": "scoombe",
+  "license": "ISC",
+  "dependencies": {
+    "random-words": "^1.1.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.4",
+    "@types/mocha": "^5.2.5",
+    "@types/node": "^10.5.2",
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
+    "pre-commit": "^1.2.2",
+    "ts-node": "^5.0.1",
+    "typescript": "^2.9.2"
+  }
+}

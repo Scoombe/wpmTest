@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonJs",
+        "sourceMap": true,
+        "outDir": "./bin",
+        "strict": true,
+    },
+    "files": [
+      "src/wordsPerMinTest"  
+    ]
+}
