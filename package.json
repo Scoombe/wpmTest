@@ -5,11 +5,12 @@
   "directories": {
     "test": "test"
   },
+  "main": "bin/wordsPerMinTest.js",
   "scripts": {
     "test": "mocha -r ts-node/register test/*.test.ts",
     "build": "tsc -p tsconfig.json"
   },
-  "pre-commit": [
+  "pre-push": [
     "test",
     "build"
   ],
@@ -36,6 +37,7 @@
     "chai": "^4.1.2",
     "mocha": "^5.2.0",
     "pre-commit": "^1.2.2",
+    "pre-push": "^0.1.1",
     "ts-node": "^5.0.1",
     "typescript": "^2.9.2"
   }
