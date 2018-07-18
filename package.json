@@ -1,6 +1,6 @@
 {
   "name": "wpmtest",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A simple class for a words per minute test.",
   "directories": {
     "test": "test"
@@ -12,6 +12,9 @@
   },
   "pre-push": [
     "test",
+    "build"
+  ],
+  "pre-commit": [
     "build"
   ],
   "repository": {
@@ -38,6 +41,7 @@
     "chai": "^4.1.2",
     "git-pre-push": "0.0.5",
     "mocha": "^5.2.0",
+    "pre-commit": "^1.2.2",
     "ts-node": "^5.0.1",
     "typescript": "^2.9.2"
   }
