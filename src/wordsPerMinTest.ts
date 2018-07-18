@@ -1,6 +1,7 @@
 import { create } from "domain";
 
 const randomWords = require("random-words");
+const timer = require("timer-stopwatch");
 export class wordsPerMinTest  {
     // holds the position that the user has got through the words
     charPos :number = 0;
@@ -18,11 +19,15 @@ export class wordsPerMinTest  {
     wordCount: number = 0;
     wordTimes:Array<number> = []; 
     highscore = {wpm: 0, averageWPM: 0, name: ""};
+    minutes: number = 0;
+    stopwatch:any; 
     usingRandomChar:boolean = false; 
     /**
-     * @param  {boolean} randomChars? if it is random chars or it is random words 
+     *@param  {Function} finishedFunction the function that will be called at the end of the stop watch.
+     *@param {number} minutes the amount of minutes the test will be for.    
+     *@param  {boolean} randomChars? if it is random chars or it is random words.
      */
-    constructor(randomChars?: boolean) {
+    constructor(finishedFunction:Function, minutes:number  , randomChars?: boolean) {
         if(randomChars)
         {
             this.usingRandomChar = true;
@@ -31,6 +36,17 @@ export class wordsPerMinTest  {
         else{
             this.generateText();                        
         }
+        this.stopwatch = new timer(60000 * minutes);
+        this.stopwatch.onDone(finishedFunction);
+    }
+
+    startStopWatch() {
+        this.stopwatch.start();
+    }
+
+    finishStopWatch() {
+        this.stopwatch.stop();
+        this.stopwatch.reset();
     }
     
     restartTest () {
@@ -144,6 +160,8 @@ export class wordsPerMinTest  {
             if (currentChar == keyPressChar) {
                 if (this.charPos != 0 && this.charPos % 5 == 0) {
                     returnObj.newWord= true;
+                    this.wordTimes.push(this.stopwatch.lap);
+                    this.calcAverageWPM();
                 }
                 if (currentChar == " ") {
                     this.wordCount++;
