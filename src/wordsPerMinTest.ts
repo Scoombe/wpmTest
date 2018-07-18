@@ -39,7 +39,6 @@ export class wordsPerMinTest  {
         this.stopwatch = new timer(60000 * minutes);
         this.stopwatch.onDone(finishedFunction);
     }
-
     startStopWatch() {
         this.stopwatch.start();
     }
