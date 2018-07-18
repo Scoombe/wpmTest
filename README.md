@@ -6,7 +6,7 @@ A class for a words per minutes test.
 npm install wpmtest
 
 
-##usage
+## usage
 
 import {wordsPerMinTest} from wordsPerMinTest
 
