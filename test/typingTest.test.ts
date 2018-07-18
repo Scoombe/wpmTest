@@ -2,8 +2,8 @@
 import {expect} from 'chai';
 import {wordsPerMinTest} from "../src/wordsPerMinTest";
 
-
-const wordsTest = new wordsPerMinTest;
+function finishedtest(){};
+const wordsTest = new wordsPerMinTest(finishedtest, 0.5);
 describe( "Average Words Per Minute Test", function() { 
     it( "should have an correct words per mins", function() {
         // an average of one word per second
@@ -102,15 +102,15 @@ describe ( "generating random words ", function() {
 
 describe ( "constructor tests", function() {
     it ( "should have 1000 random chars in the complete text", function() {
-        let newWordTest = new wordsPerMinTest(true);
+        let newWordTest = new wordsPerMinTest(finishedtest,0.5, true);
         expect(newWordTest.CompleteText.length).to.equal(1000);
     });
     it ( "should have 200 words in the complete text" , function() {
-        let newWordTest = new wordsPerMinTest(false);
+        let newWordTest = new wordsPerMinTest(finishedtest,0.5,false);
         expect(newWordTest.CompleteText.split(" ").length).to.equal(200)
     });
     it ( "should have 200 words in the complete text without specifying the random chars bool" , function() {
-        let newWordTest = new wordsPerMinTest;
+        let newWordTest = new wordsPerMinTest(finishedtest,0.5,);
         expect(newWordTest.CompleteText.split(" ").length).to.equal(200)
     });
 })
@@ -161,7 +161,7 @@ describe ( " highscores are updated ", function () {
         expect(wordsTest.checkHighscore()).to.be.false;
     })
     it ( " update a highscore " , function() {
-        let newWordTest = new wordsPerMinTest;
+        let newWordTest = new wordsPerMinTest(finishedtest,0.5,);
         newWordTest.averageWPM = 120;
         newWordTest.wordCount = 60;
         newWordTest.updateHighscore("sam");
