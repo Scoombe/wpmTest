@@ -1,11 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const randomWords = require("random-words");
+const timer = require("timer-stopwatch");
 class wordsPerMinTest {
     /**
-     * @param  {boolean} randomChars? if it is random chars or it is random words
+     *@param  {Function} finishedFunction the function that will be called at the end of the stop watch.
+     *@param {number} minutes the amount of minutes the test will be for.
+     *@param  {boolean} randomChars? if it is random chars or it is random words.
      */
-    constructor(randomChars) {
+    constructor(finishedFunction, minutes, randomChars) {
         // holds the position that the user has got through the words
         this.charPos = 0;
         // the complete text from start to finish
@@ -22,6 +25,7 @@ class wordsPerMinTest {
         this.wordCount = 0;
         this.wordTimes = [];
         this.highscore = { wpm: 0, averageWPM: 0, name: "" };
+        this.minutes = 0;
         this.usingRandomChar = false;
         if (randomChars) {
             this.usingRandomChar = true;
@@ -30,6 +34,15 @@ class wordsPerMinTest {
         else {
             this.generateText();
         }
+        this.stopwatch = new timer(60000 * minutes);
+        this.stopwatch.onDone(finishedFunction);
+    }
+    startStopWatch() {
+        this.stopwatch.start();
+    }
+    finishStopWatch() {
+        this.stopwatch.stop();
+        this.stopwatch.reset();
     }
     restartTest() {
         this.charPos = 0;
@@ -129,6 +142,8 @@ class wordsPerMinTest {
             if (currentChar == keyPressChar) {
                 if (this.charPos != 0 && this.charPos % 5 == 0) {
                     returnObj.newWord = true;
+                    this.wordTimes.push(this.stopwatch.lap);
+                    this.calcAverageWPM();
                 }
                 if (currentChar == " ") {
                     this.wordCount++;

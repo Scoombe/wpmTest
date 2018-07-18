@@ -14,6 +14,9 @@
     "test",
     "build"
   ],
+  "pre-commit": [
+    "build"
+  ],
   "repository": {
     "type": "git",
     "url": "http://www.github.com/scoombe/wpmTest"
@@ -38,6 +41,7 @@
     "chai": "^4.1.2",
     "git-pre-push": "0.0.5",
     "mocha": "^5.2.0",
+    "pre-commit": "^1.2.2",
     "ts-node": "^5.0.1",
     "typescript": "^2.9.2"
   }
