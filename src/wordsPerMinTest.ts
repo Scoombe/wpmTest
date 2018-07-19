@@ -168,7 +168,6 @@ export class wordsPerMinTest  {
             if (currentChar == keyPressChar) {
                 if (this.charPos != 0 && this.charPos % 5 == 0) {
                     returnObj.newWord= true;
-                    console.log(`lap: ${this.stopwatch.lap()}`);
                     this.wordTimes.push(this.stopwatch.lap());
                     this.calcAverageWPM();
                 }
