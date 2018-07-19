@@ -36,14 +36,23 @@ export class wordsPerMinTest  {
         else{
             this.generateText();                        
         }
-        this.stopwatch = new timer(60000 * minutes);
+        this.stopwatch = new timer(60000 * minutes, {refreshRateMS:1});
         this.stopwatch.onDone(finishedFunction);
     }
+    
+   
+
+    timeFunction(time: any) {
+        console.log(time.ms)
+    }
+
     startStopWatch() {
+        this.started = true;
         this.stopwatch.start();
     }
 
     finishStopWatch() {
+        this.started = false;
         this.stopwatch.stop();
         this.stopwatch.reset();
     }
@@ -156,10 +165,12 @@ export class wordsPerMinTest  {
         let currentChar:string = this.getCurrentChar();
         let returnObj :any = {newWord: false,isCharCorrect: false };
         if (this.started) {
+            console.log(`${keyPressChar}`);
             if (currentChar == keyPressChar) {
                 if (this.charPos != 0 && this.charPos % 5 == 0) {
                     returnObj.newWord= true;
-                    this.wordTimes.push(this.stopwatch.lap);
+                    console.log(`lap: ${this.stopwatch.lap()}`);
+                    this.wordTimes.push(this.stopwatch.lap());
                     this.calcAverageWPM();
                 }
                 if (currentChar == " ") {
