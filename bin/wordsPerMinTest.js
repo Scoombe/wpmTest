@@ -144,7 +144,6 @@ class wordsPerMinTest {
         let currentChar = this.getCurrentChar();
         let returnObj = { newWord: false, isCharCorrect: false };
         if (this.started) {
-            console.log(`${keyPressChar}`);
             if (currentChar == keyPressChar) {
                 if (this.charPos != 0 && this.charPos % 5 == 0) {
                     returnObj.newWord = true;
