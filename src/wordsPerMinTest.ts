@@ -165,7 +165,6 @@ export class wordsPerMinTest  {
         let currentChar:string = this.getCurrentChar();
         let returnObj :any = {newWord: false,isCharCorrect: false };
         if (this.started) {
-            console.log(`${keyPressChar}`);
             if (currentChar == keyPressChar) {
                 if (this.charPos != 0 && this.charPos % 5 == 0) {
                     returnObj.newWord= true;
