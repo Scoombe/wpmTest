@@ -3,7 +3,7 @@ import {expect} from 'chai';
 import {wordsPerMinTest} from "../src/wordsPerMinTest";
 
 function finishedtest(){};
-const wordsTest = new wordsPerMinTest(finishedtest, 0.5);
+let wordsTest = new wordsPerMinTest(finishedtest, 0.001);
 describe( "Average Words Per Minute Test", function() { 
     it( "should have an correct words per mins", function() {
         // an average of one word per second
@@ -55,12 +55,16 @@ describe( "Check Key Char test", function() {
         expect( checkKeyCharObj.newWord).to.be.false;
         expect( checkKeyCharObj.errorText).to.equal("[space]");
     })
-    it( "should be a new word", function() {
+    it( "should be a new word", function(done) {
+        wordsTest.startStopWatch();
         let checkKeyCharObj = wordsTest.checkKeyChar(" ");
         expect( checkKeyCharObj.isCharCorrect ).to.be.true;
         expect( checkKeyCharObj.newWord).to.be.true;
         expect(wordsTest.wordCount).to.equal(1);
+        done();
+        wordsTest.finishStopWatch();
     })
+   
 })
 
 describe ( "random Char tests", function() {
@@ -167,5 +171,4 @@ describe ( " highscores are updated ", function () {
         newWordTest.updateHighscore("sam");
         expect(newWordTest.highscore).to.deep.equal({wpm: 120, averageWPM: 120, name: "sam"});
     })
-
-})
+});
