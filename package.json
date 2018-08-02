@@ -43,6 +43,6 @@
     "mocha": "^5.2.0",
     "pre-commit": "^1.2.2",
     "ts-node": "^5.0.1",
-    "typescript": "^2.9.2"
+    "typescript": "^3.0.1"
   }
 }
