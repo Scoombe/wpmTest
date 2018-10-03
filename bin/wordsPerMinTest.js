@@ -57,9 +57,9 @@ class wordsPerMinTest {
         this.averageWPM = 0;
         this.lastTenAvWPM = 0;
         this.secTimer = 0;
-        this.started = false;
         this.wordCount = 0;
         this.wordTimes = [];
+        this.finishStopWatch();
         if (this.usingRandomChar) {
             this.generateChars(1000);
         }
