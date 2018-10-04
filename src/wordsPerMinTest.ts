@@ -82,6 +82,9 @@ export class wordsPerMinTest  {
         }
     }
 
+    updateDisplayText( pos: number): void {
+        this.curDisplayText = this.completeText.slice(pos, pos+this.displayTextLength);
+    }
     
     /**
      * @param  {number} charLen length of the char string to create
@@ -99,7 +102,7 @@ export class wordsPerMinTest  {
            
         }
         this.completeText = charString;
-        this.curDisplayText = this.completeText.slice(0,this.displayTextLength);
+        this.updateDisplayText(0);
     }
 
     randomChar() :string {
@@ -113,7 +116,7 @@ export class wordsPerMinTest  {
     generateText() :void {
         let randWords: Array<string> = randomWords({exactly:200,maxLength:5});
         this.completeText = randWords.join(" ");
-        this.curDisplayText = this.completeText.slice(0,this.displayTextLength);
+        this.updateDisplayText(0);
     }
 
     // function for getting 1 character
@@ -166,9 +169,13 @@ export class wordsPerMinTest  {
      * 
      * 
      */
-    checkKeyChar(keyPressChar :string) :any {
+    checkKeyChar(keyPressChar :string) :{newWord: boolean, isCharCorrect: boolean, errorText?: string} {
         let currentChar:string = this.getCurrentChar();
-        let returnObj :any = {newWord: false,isCharCorrect: false };
+        let returnObj :{
+                newWord: boolean, 
+                isCharCorrect: boolean, 
+                errorText?: string 
+            } = { newWord: false, isCharCorrect: false };
         if (this.started) {
             if (currentChar == keyPressChar) {
                 if (this.charPos != 0 && this.charPos % 5 == 0) {
@@ -180,7 +187,7 @@ export class wordsPerMinTest  {
                     this.wordCount++;
                 }
                 this.charPos= this.charPos + 1;
-                this.curDisplayText = this.completeText.slice(this.charPos,this.charPos+100);
+                this.updateDisplayText(this.charPos);
                 returnObj.isCharCorrect = true;
             }
             else {
@@ -188,7 +195,7 @@ export class wordsPerMinTest  {
                     returnObj.errorText = "[space]";
                 } 
                 else {
-                        returnObj.errorText = currentChar;
+                    returnObj.errorText = currentChar;
                 }
             }
         }
