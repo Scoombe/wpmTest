@@ -80,10 +80,10 @@ used to calculate the total WPM and updates the mostRecentWPM property
 used to check if the key is correct 
 
 returns an object: 
-
+`
 {
     newWord: bool - if the character is a new word or not  
     isCharCorrect: bool - if the character is correct then this is true
     errorText: ?string - this returns the character that was supposed to be typed only defined when
 }
-
+`
