@@ -74,6 +74,9 @@ class wordsPerMinTest {
             this.generateText();
         }
     }
+    updateDisplayText(pos) {
+        this.curDisplayText = this.completeText.slice(pos, pos + this.displayTextLength);
+    }
     /**
      * @param  {number} charLen length of the char string to create
      * @returns void
@@ -89,7 +92,7 @@ class wordsPerMinTest {
             stringLength = charString.length;
         }
         this.completeText = charString;
-        this.curDisplayText = this.completeText.slice(0, this.displayTextLength);
+        this.updateDisplayText(0);
     }
     randomChar() {
         const charList = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "x", "y", "z", "!", "\"", "£", "$", "%", "^", "&", "*", ",", "(", ")", ":", "@", "{", "}", "#", "?", ">", "<", "[", "]", "/", "\\", "<", ">", "\'", ";"];
@@ -100,7 +103,7 @@ class wordsPerMinTest {
     generateText() {
         let randWords = randomWords({ exactly: 200, maxLength: 5 });
         this.completeText = randWords.join(" ");
-        this.curDisplayText = this.completeText.slice(0, this.displayTextLength);
+        this.updateDisplayText(0);
     }
     // function for getting 1 character
     getCurrentChar() {
@@ -161,7 +164,7 @@ class wordsPerMinTest {
                     this.wordCount++;
                 }
                 this.charPos = this.charPos + 1;
-                this.curDisplayText = this.completeText.slice(this.charPos, this.charPos + 100);
+                this.updateDisplayText(this.charPos);
                 returnObj.isCharCorrect = true;
             }
             else {
