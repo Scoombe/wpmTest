@@ -1,6 +1,6 @@
 {
   "name": "wpmtest",
-  "version": "1.3.2",
+  "version": "1.3.4",
   "description": "A simple class for a words per minute test.",
   "directories": {
     "test": "test"

@@ -6,7 +6,7 @@ export class wordsPerMinTest  {
     // holds the position that the user has got through the words
     charPos :number = 0;
     // the complete text from start to finish
-    CompleteText: string = "";
+    completeText: string = "";
     // the text that is being displayed 100 chars
     curDisplayText: string = "";
     // when the words per min test is finished used for making sure keys aren't checked when it is finished
@@ -14,12 +14,12 @@ export class wordsPerMinTest  {
     averageWPM: number = 0;
     // the most recent words per minute 
     lastTenAvWPM: number = 0;
+    displayTextLength: number = 100;
     secTimer: number = 0;
     started = false;
     wordCount: number = 0;
     wordTimes:Array<number> = []; 
     highscore = {wpm: 0, averageWPM: 0, name: ""};
-    minutes: number = 0;
     stopwatch:any; 
     usingRandomChar:boolean = false; 
     /**
@@ -27,14 +27,20 @@ export class wordsPerMinTest  {
      *@param {number} minutes the amount of minutes the test will be for.    
      *@param  {boolean} randomChars? if it is random chars or it is random words.
      */
-    constructor(finishedFunction:Function, minutes:number  , randomChars?: boolean) {
-        if(randomChars)
-        {
-            this.usingRandomChar = true;
-            this.generateChars(1000);
+    constructor(finishedFunction:Function, minutes:number  , options? : { randomChars?: boolean, displayTextLength?: number }) {
+        if (options !== undefined) {
+            options.displayTextLength = options.displayTextLength === undefined ? 100 : options.displayTextLength; 
+            this.displayTextLength = options.displayTextLength;
+            if (options.randomChars) {
+                this.usingRandomChar = true;
+                this.generateChars(1000);
+            }
+            else{ 
+                this.generateText();
+            }
         }
-        else{
-            this.generateText();                        
+        else {
+            this.generateText();
         }
         this.stopwatch = new timer(60000 * minutes, {refreshRateMS:1});
         this.stopwatch.onDone(finishedFunction);
@@ -59,7 +65,7 @@ export class wordsPerMinTest  {
     
     restartTest () {
         this.charPos = 0;
-        this.CompleteText = "";
+        this.completeText = "";
         this.curDisplayText = "";
         this.done = false;
         this.averageWPM = 0;
@@ -86,15 +92,14 @@ export class wordsPerMinTest  {
         let stringLength: number = 0;
         while (stringLength != charLen){
             charString += this.randomChar();
-            if (stringLength %5 == 0 && stringLength != 0 && stringLength+1 != charLen)
-            {
+            if (stringLength %5 == 0 && stringLength != 0 && stringLength+1 != charLen) {
                 charString+= " ";
             }
             stringLength = charString.length;
            
         }
-        this.CompleteText = charString;
-        this.curDisplayText = this.CompleteText.slice(0,100);
+        this.completeText = charString;
+        this.curDisplayText = this.completeText.slice(0,this.displayTextLength);
     }
 
     randomChar() :string {
@@ -107,13 +112,13 @@ export class wordsPerMinTest  {
     //method for generating random words 
     generateText() :void {
         let randWords: Array<string> = randomWords({exactly:200,maxLength:5});
-        this.CompleteText = randWords.join(" ");
-        this.curDisplayText = this.CompleteText.slice(0,100);
+        this.completeText = randWords.join(" ");
+        this.curDisplayText = this.completeText.slice(0,this.displayTextLength);
     }
 
     // function for getting 1 character
-    getCurrentChar():string{
-        return this.CompleteText.slice(this.charPos, this.charPos+1);
+    getCurrentChar():string {
+        return this.completeText.slice(this.charPos, this.charPos+1);
     }
 
     
@@ -175,7 +180,7 @@ export class wordsPerMinTest  {
                     this.wordCount++;
                 }
                 this.charPos= this.charPos + 1;
-                this.curDisplayText = this.CompleteText.slice(this.charPos,this.charPos+100);
+                this.curDisplayText = this.completeText.slice(this.charPos,this.charPos+100);
                 returnObj.isCharCorrect = true;
             }
             else {

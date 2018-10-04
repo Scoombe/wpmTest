@@ -34,7 +34,7 @@ describe( "Average Words Per Minute Test", function() {
 
 describe( "Check Key Char test", function() {
     wordsTest.started = true;
-    wordsTest.CompleteText = "aaaaa aaaaa aaaaa "
+    wordsTest.completeText = "aaaaa aaaaa aaaaa "
     it( "should check correct chars", function() {
 
         let checkKeyCharObj  = wordsTest.checkKeyChar("a");
@@ -78,12 +78,12 @@ describe ( "random Char tests", function() {
 describe ( "generating random Chars", function() {
     it ( "should return a certain number of random chars", function() {
         wordsTest.generateChars(100);
-        expect(wordsTest.CompleteText.length).to.equal(100);
+        expect(wordsTest.completeText.length).to.equal(100);
     });
     it ( " should have spaces in it ever 5th char from the 6th pos", function() {
         for(let i = 6; i < 100; i += 5)
         {
-            expect(wordsTest.CompleteText.slice(i,i+1)).to.equal(" ");
+            expect(wordsTest.completeText.slice(i,i+1)).to.equal(" ");
         }       
     });
 })
@@ -91,14 +91,14 @@ describe ( "generating random Chars", function() {
 describe ( "generating random words ", function() {
     it ( "should generate 200 words in the complete text", function() {
         wordsTest.generateText();
-        expect(wordsTest.CompleteText.split(" ").length).to.equal(200);
+        expect(wordsTest.completeText.split(" ").length).to.equal(200);
     });
     it ( "should have 100 chars in the display text", function() {
         wordsTest.generateText();
         expect(wordsTest.curDisplayText.length).to.equal(100);
     });
     it ( "should only have strings in the complete text", function() {
-        wordsTest.CompleteText.split(" ").forEach(word => {
+        wordsTest.completeText.split(" ").forEach(word => {
             expect(typeof(word)).to.equal("string");
         });
     });
@@ -106,16 +106,25 @@ describe ( "generating random words ", function() {
 
 describe ( "constructor tests", function() {
     it ( "should have 1000 random chars in the complete text", function() {
-        let newWordTest = new wordsPerMinTest(finishedtest,0.5, true);
-        expect(newWordTest.CompleteText.length).to.equal(1000);
+        let newWordTest = new wordsPerMinTest(finishedtest,0.5, { randomChars: true });
+        expect(newWordTest.completeText.length).to.equal(1000);
     });
     it ( "should have 200 words in the complete text" , function() {
-        let newWordTest = new wordsPerMinTest(finishedtest,0.5,false);
-        expect(newWordTest.CompleteText.split(" ").length).to.equal(200)
+        let newWordTest = new wordsPerMinTest(finishedtest, 0.5, { randomChars: true });
+        expect(newWordTest.completeText.split(" ").length).to.equal(200)
     });
     it ( "should have 200 words in the complete text without specifying the random chars bool" , function() {
-        let newWordTest = new wordsPerMinTest(finishedtest,0.5,);
-        expect(newWordTest.CompleteText.split(" ").length).to.equal(200)
+        let newWordTest = new wordsPerMinTest(finishedtest,0.5);
+        expect(newWordTest.completeText.split(" ").length).to.equal(200)
+    });
+    it ( "should have 400 chars in the curdisplay text with random words" , function() {
+        let newWordTest = new wordsPerMinTest(finishedtest,0.5, { displayTextLength: 400});
+        expect(newWordTest.curDisplayText.length).to.equal(400);
+    });
+    it ( "should have 400 chars in the curdisplay text with random chars" , function() {
+        let newWordTest = new wordsPerMinTest(finishedtest,0.5, { displayTextLength: 400, randomChars: true});
+        expect(newWordTest.curDisplayText.length).to.equal(400);
+        expect(newWordTest.completeText.length).to.equal(1000);
     });
 })
 
@@ -165,7 +174,7 @@ describe ( " highscores are updated ", function () {
         expect(wordsTest.checkHighscore()).to.be.false;
     })
     it ( " update a highscore " , function() {
-        let newWordTest = new wordsPerMinTest(finishedtest,0.5,);
+        let newWordTest = new wordsPerMinTest(finishedtest, 0.5);
         newWordTest.averageWPM = 120;
         newWordTest.wordCount = 60;
         newWordTest.updateHighscore("sam");
