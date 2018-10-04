@@ -79,7 +79,8 @@ used to calculate the total WPM and updates the mostRecentWPM property
 
 used to check if the key is correct 
 
-returns an object: 
+returns an object:
+
 `
 {
     newWord: bool - if the character is a new word or not  
