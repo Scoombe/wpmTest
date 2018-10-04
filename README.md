@@ -45,7 +45,7 @@ the amount of characters in the display text, set to 100 by default.
 #### charPos
 is the position in the complete text that the user is on.
 
-#### CompleteText
+#### completeText
 is a string containing the whole 200 words / 1000 charecters
 
 #### curDisplayText
@@ -57,6 +57,33 @@ is the average WPM for the whole all of the completed words
 #### lastTenAvWPM
 is the average WPM for the last ten words
 
+## functions
 
+#### restartTest
 
+This is used to restart the test, restarts the stop watch as well resetting all of the text. 
+
+#### updateDisplayText (pos: number)
+
+used to update the display text property from the position
+
+#### calcAverageWPM
+
+used to calculate the total WPM and updates the averageWPM property
+
+#### mostRecentWPM 
+
+used to calculate the total WPM and updates the mostRecentWPM property
+
+#### checkKeyChar (char: char)
+
+used to check if the key is correct 
+
+returns an object: 
+
+{
+    newWord: bool - if the character is a new word or not  
+    isCharCorrect: bool - if the character is correct then this is true
+    errorText: ?string - this returns the character that was supposed to be typed only defined when
+}
 
