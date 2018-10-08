@@ -8,14 +8,17 @@
   "main": "bin/wordsPerMinTest.js",
   "scripts": {
     "test": "mocha -r ts-node/register test/*.test.ts",
-    "build": "tsc -p tsconfig.json"
+    "build": "tsc -p tsconfig.json",
+    "lint": "tslint -c tslint.json 'src/*.ts'",
+    "lint-fix": "tslint -c tslint.json 'src/*.ts' --fix"
   },
   "pre-push": [
     "test",
     "build"
   ],
   "pre-commit": [
-    "build"
+    "build",
+    "lint"
   ],
   "repository": {
     "type": "git",
@@ -43,6 +46,7 @@
     "mocha": "^5.2.0",
     "pre-commit": "^1.2.2",
     "ts-node": "^5.0.1",
+    "tslint": "^5.11.0",
     "typescript": "^3.0.1"
   }
 }
