@@ -17,7 +17,8 @@
     "build"
   ],
   "pre-commit": [
-    "build"
+    "build",
+    "lint"
   ],
   "repository": {
     "type": "git",
