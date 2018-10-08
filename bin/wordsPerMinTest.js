@@ -4,9 +4,9 @@ const randomWords = require("random-words");
 const timer = require("timer-stopwatch");
 class wordsPerMinTest {
     /**
-     *@param  {Function} finishedFunction the function that will be called at the end of the stop watch.
-     *@param {number} minutes the amount of minutes the test will be for.
-     *@param  {boolean} randomChars? if it is random chars or it is random words.
+     *  @param  {Function} finishedFunction the function that will be called at the end of the stop watch.
+     *  @param {number} minutes the amount of minutes the test will be for.
+     *  @param  {boolean} randomChars? if it is random chars or it is random words.
      */
     constructor(finishedFunction, minutes, options) {
         // holds the position that the user has got through the words
@@ -18,7 +18,7 @@ class wordsPerMinTest {
         // when the words per min test is finished used for making sure keys aren't checked when it is finished
         this.done = false;
         this.averageWPM = 0;
-        // the most recent words per minute 
+        // the most recent words per minute
         this.lastTenAvWPM = 0;
         this.displayTextLength = 100;
         this.secTimer = 0;
@@ -45,6 +45,7 @@ class wordsPerMinTest {
         this.stopwatch.onDone(finishedFunction);
     }
     timeFunction(time) {
+        /* tslint:disable-next-line no-console */
         console.log(time.ms);
     }
     startStopWatch() {
@@ -84,9 +85,9 @@ class wordsPerMinTest {
     generateChars(charLen) {
         let charString = "";
         let stringLength = 0;
-        while (stringLength != charLen) {
+        while (stringLength !== charLen) {
             charString += this.randomChar();
-            if (stringLength % 5 == 0 && stringLength != 0 && stringLength + 1 != charLen) {
+            if (stringLength % 5 === 0 && stringLength !== 0 && stringLength + 1 !== charLen) {
                 charString += " ";
             }
             stringLength = charString.length;
@@ -95,13 +96,21 @@ class wordsPerMinTest {
         this.updateDisplayText(0);
     }
     randomChar() {
-        const charList = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "x", "y", "z", "!", "\"", "£", "$", "%", "^", "&", "*", ",", "(", ")", ":", "@", "{", "}", "#", "?", ">", "<", "[", "]", "/", "\\", "<", ">", "\'", ";"];
-        let randomNum = Math.floor((Math.random() * charList.length));
+        const charList = [
+            "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
+            "a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
+            "k", "h", "i", "j", "k", "l", "m", "n", "o", "p",
+            "q", "r", "s", "t", "u", "v", "x", "y", "z", "!",
+            "\"", "£", "$", "%", "^", "&", "*", ",", "(", ")",
+            ":", "@", "{", "}", "#", "?", ">", "<", "[", "]",
+            "/", "\\", "<", ">", "\'", ";"
+        ];
+        const randomNum = Math.floor((Math.random() * charList.length));
         return charList[randomNum];
     }
-    //method for generating random words 
+    // method for generating random words
     generateText() {
-        let randWords = randomWords({ exactly: 200, maxLength: 5 });
+        const randWords = randomWords({ exactly: 200, maxLength: 5 });
         this.completeText = randWords.join(" ");
         this.updateDisplayText(0);
     }
@@ -116,7 +125,7 @@ class wordsPerMinTest {
     calcAverageWPM() {
         let totalTimes = 0;
         let count = 0;
-        this.wordTimes.forEach(time => {
+        this.wordTimes.forEach((time) => {
             totalTimes += time;
             count++;
         });
@@ -124,7 +133,7 @@ class wordsPerMinTest {
         let averageTime;
         averageTime = totalTimes / count;
         this.averageWPM = 60 / (averageTime / 1000);
-        //calling the mostRecentWPM func
+        // calling the mostRecentWPM func
         this.mostRecentWPM();
     }
     /**
@@ -133,10 +142,10 @@ class wordsPerMinTest {
      */
     mostRecentWPM() {
         let totalTimes = 0;
-        let count = 0;
-        let greaterThan10 = this.wordTimes.length > 10;
-        let startingNum = greaterThan10 ? this.wordTimes.length - 10 : 0;
-        for (var i = startingNum; i < this.wordTimes.length; i++) {
+        const count = 0;
+        const greaterThan10 = this.wordTimes.length > 10;
+        const startingNum = greaterThan10 ? this.wordTimes.length - 10 : 0;
+        for (let i = startingNum; i < this.wordTimes.length; i++) {
             totalTimes += this.wordTimes[i];
         }
         let averageTime;
@@ -151,16 +160,16 @@ class wordsPerMinTest {
      *
      */
     checkKeyChar(keyPressChar) {
-        let currentChar = this.getCurrentChar();
-        let returnObj = { newWord: false, isCharCorrect: false };
+        const currentChar = this.getCurrentChar();
+        const returnObj = { newWord: false, isCharCorrect: false };
         if (this.started) {
-            if (currentChar == keyPressChar) {
-                if (this.charPos != 0 && this.charPos % 5 == 0) {
+            if (currentChar === keyPressChar) {
+                if (this.charPos !== 0 && this.charPos % 5 === 0) {
                     returnObj.newWord = true;
                     this.wordTimes.push(this.stopwatch.lap());
                     this.calcAverageWPM();
                 }
-                if (currentChar == " ") {
+                if (currentChar === " ") {
                     this.wordCount++;
                 }
                 this.charPos = this.charPos + 1;
@@ -168,7 +177,7 @@ class wordsPerMinTest {
                 returnObj.isCharCorrect = true;
             }
             else {
-                if (currentChar == " ") {
+                if (currentChar === " ") {
                     returnObj.errorText = "[space]";
                 }
                 else {
