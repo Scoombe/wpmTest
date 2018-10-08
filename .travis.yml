@@ -3,6 +3,9 @@ before_install:
 - npm install --only=dev
 node_js:
 - node
+script:
+  - npm run lint
+  - npm run test
 deploy:
   provider: npm
   email: skatesam95@gmail.com
