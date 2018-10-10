@@ -6,7 +6,8 @@
     "jsRules": {},
     "rules": {
         "class-name": false,
-        "no-var-requires": false
+        "no-var-requires": false,
+        "interface-over-type-literal": false
 
     },
     "rulesDirectory": []
