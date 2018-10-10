@@ -156,8 +156,6 @@ class wordsPerMinTest {
      * @function for checking if the key char is correct
      * @param  {string} keyPressChar
      * @returns {json} ReturnObj: isCharCorrect - bool: newWord - bool: ?errorText - string
-     *
-     *
      */
     checkKeyChar(keyPressChar) {
         const currentChar = this.getCurrentChar();

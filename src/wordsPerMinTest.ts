@@ -1,6 +1,12 @@
 const randomWords = require("random-words");
 const timer = require("timer-stopwatch");
 
+interface ICheckKeyCharReturnObj {
+    newWord: boolean;
+    isCharCorrect: boolean;
+    errorText?: string;
+}
+
 export class wordsPerMinTest  {
     // holds the position that the user has got through the words
     public charPos: number = 0;
@@ -51,18 +57,18 @@ export class wordsPerMinTest  {
         console.log(time.ms);
     }
 
-    public startStopWatch() {
+    public startStopWatch(): void {
         this.started = true;
         this.stopwatch.start();
     }
 
-    public finishStopWatch() {
+    public finishStopWatch(): void {
         this.started = false;
         this.stopwatch.stop();
         this.stopwatch.reset();
     }
 
-    public restartTest() {
+    public restartTest(): void {
         this.charPos = 0;
         this.completeText = "";
         this.curDisplayText = "";
@@ -168,16 +174,10 @@ export class wordsPerMinTest  {
      * @function for checking if the key char is correct
      * @param  {string} keyPressChar
      * @returns {json} ReturnObj: isCharCorrect - bool: newWord - bool: ?errorText - string
-     *
-     *
      */
-    public checkKeyChar(keyPressChar: string): {newWord: boolean, isCharCorrect: boolean, errorText?: string} {
+    public checkKeyChar(keyPressChar: string): ICheckKeyCharReturnObj {
         const currentChar: string = this.getCurrentChar();
-        const returnObj: {
-                newWord: boolean,
-                isCharCorrect: boolean,
-                errorText?: string,
-            } = { newWord: false, isCharCorrect: false };
+        const returnObj: ICheckKeyCharReturnObj = { newWord: false, isCharCorrect: false };
         if (this.started) {
             if (currentChar === keyPressChar) {
                 if (this.charPos !== 0 && this.charPos % 5 === 0) {

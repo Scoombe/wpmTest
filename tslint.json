@@ -7,7 +7,6 @@
     "rules": {
         "class-name": false,
         "no-var-requires": false
-
     },
     "rulesDirectory": []
 }
