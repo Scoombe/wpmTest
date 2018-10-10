@@ -1,11 +1,11 @@
 const randomWords = require("random-words");
 const timer = require("timer-stopwatch");
 
-export type ReturnType =  {
+interface ICheckKeyCharReturnObj {
     newWord: boolean;
     isCharCorrect: boolean;
     errorText?: string;
-};
+}
 
 export class wordsPerMinTest  {
     // holds the position that the user has got through the words
@@ -175,9 +175,9 @@ export class wordsPerMinTest  {
      * @param  {string} keyPressChar
      * @returns {json} ReturnObj: isCharCorrect - bool: newWord - bool: ?errorText - string
      */
-    public checkKeyChar(keyPressChar: string): ReturnType {
+    public checkKeyChar(keyPressChar: string): ICheckKeyCharReturnObj {
         const currentChar: string = this.getCurrentChar();
-        const returnObj: ReturnType = { newWord: false, isCharCorrect: false };
+        const returnObj: ICheckKeyCharReturnObj = { newWord: false, isCharCorrect: false };
         if (this.started) {
             if (currentChar === keyPressChar) {
                 if (this.charPos !== 0 && this.charPos % 5 === 0) {
