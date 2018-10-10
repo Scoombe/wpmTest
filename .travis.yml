@@ -7,9 +7,9 @@ script:
   - npm run lint
   - npm run test
 deploy:
-  provider: npm
-  email: skatesam95@gmail.com
-  api_key:
-    secure: bncLrKrf43ZVD+FA8eZW2Z9xAgbaRtRFBYoYnamtPBBYrv1XX7fOgBTGK/Fb77+Z8d/OcOGpVXzsMsZ6EiXJcrIrD01KLBz64xt3DXpsZ6hcU+K3+JFXeLRlR6u02O6ktP+9Wv7R80GVOb7k/WbblJF7EMR89QzOpu47+NNDq/6DrNNk66Khsw1g7O3MjW/s2qkovXzH+frIDMhvb3fRCjCoje8LQf0O5ar8c8omcE5DbOzn0g9YgJfIbDwowQO+k7y9FNnZ9PhujzSPqpmoTXJ2tLLDi6LLeRSNVrPePvQMBDEu54mr35RmGf39xQaOKWCvlwLVT6Ea78DuPvXvYzkUy4HrK6Nuc5rnHePdliHFUU8leXU5lszrifH95Ymjq/4An36mY0EEFwkYAvTKyVSztDpfQlc99eMieCX+uwwDHNPY39Z5WhsxATNtzfwwSfTxBzdvE5sW2CTVh1R2N41IP2f9EPZw/rbLVpFWqFCu9zHVyIRGmv3NMqNt9snC8tKjsZNQBXAbJqgl6zE7ZBdCqIkn6zXPaC9b27J/p+0xXFKk/GMdqkX+7f5CYIp4e5h0m64Epd8tmnEqh5zO8XuXtnjIoKyo2LZqnXolbdKKfZGHBbibzKiYMJ3/gAiVtX2ninlwnA3YwUGq9idh7071x/eezsQqPGEyCZDl0aQ=
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN 
+  keep-history: true
   on:
-    repo: Scoombe/wpmTest
+   branch: master
