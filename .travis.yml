@@ -6,16 +6,16 @@ node_js:
 script:
   - npm run lint
   - npm run test
+  - npm run build
 deploy:
   - provider: npm
     email: skatesam95@gmail.com
-    api_key:
-      secure: bncLrKrf43ZVD+FA8eZW2Z9xAgbaRtRFBYoYnamtPBBYrv1XX7fOgBTGK/Fb77+Z8d/OcOGpVXzsMsZ6EiXJcrIrD01KLBz64xt3DXpsZ6hcU+K3+JFXeLRlR6u02O6ktP+9Wv7R80GVOb7k/WbblJF7EMR89QzOpu47+NNDq/6DrNNk66Khsw1g7O3MjW/s2qkovXzH+frIDMhvb3fRCjCoje8LQf0O5ar8c8omcE5DbOzn0g9YgJfIbDwowQO+k7y9FNnZ9PhujzSPqpmoTXJ2tLLDi6LLeRSNVrPePvQMBDEu54mr35RmGf39xQaOKWCvlwLVT6Ea78DuPvXvYzkUy4HrK6Nuc5rnHePdliHFUU8leXU5lszrifH95Ymjq/4An36mY0EEFwkYAvTKyVSztDpfQlc99eMieCX+uwwDHNPY39Z5WhsxATNtzfwwSfTxBzdvE5sW2CTVh1R2N41IP2f9EPZw/rbLVpFWqFCu9zHVyIRGmv3NMqNt9snC8tKjsZNQBXAbJqgl6zE7ZBdCqIkn6zXPaC9b27J/p+0xXFKk/GMdqkX+7f5CYIp4e5h0m64Epd8tmnEqh5zO8XuXtnjIoKyo2LZqnXolbdKKfZGHBbibzKiYMJ3/gAiVtX2ninlwnA3YwUGq9idh7071x/eezsQqPGEyCZDl0aQ=
+    secure: "qAM0mArQFQG1M88IKBCGi6rGaCKnA2MtcHEq7JUDz/N9W2Mh4ZaQNy0GkyGrWrxuGVO9xSzQVL/3MrxAe/127cD/Bib0cSsWYaNL7bqojZ1+6dVJnJx9Dq5kpLFWYXIehP6dR0E7L8N08x1NvvR9KEZoU0dyIFOPps/rxWeqb/P5OxYBOIx09FXDRQgzlfT/++KNlqG9Sldq1TGaT7sTTZ/7T2InOOWTxmaEP0y7Hs+RueIXY3aBJYFBNp35Fg3gSA7IUivPdyds6Fzz+/OFd7DhF5vEWt2NljpjN+J/YmL3MPnFssHflPTGqlZ3QerstdXgUpTQ4DVhrM/wyETbZcNpIckyCQ4ZwrXdp+znSQ6mLqAwKcdhFWKS97AdAyxqn3sDnHduysR+MTlruGGs9Hxj8oeflTibPQwQ1xsOCfknUC2AS+LWmsMUBCACwfxoRpvZhIVLOqrTBGyGoeF2gx3cwGfkm84rEmjzqGTUOhnasYKjbHVe+Xv5eLmH/o2YgjBHmGMWI6D9sn8lxlDqfOK2eX+YHeVq2cPrZl42Am2F3BdpmxUzO06zOoFe+ovn2dpjezNYFrS4jwyQco5aBzqx7T44ZEk4sKLt9V0Hvv6NkA6b1MBbtHu7j5FTdcuyp5EupVnwlRtw7ewMJTHZzaIcQeWxFMzyEcimpFLaIYo="
     on:
       repo: Scoombe/wpmTest
   - provider: pages
     skip-cleanup: true
-    github-token: $GITHUB_TOKEN 
+    secure: "FWQr5+0lbPfa3tGyL8Tqv6pnFL4HIKZ4T6CHrx6DuaTjsaH8wSKJL2OmQwF1SYWrE7Aqf/PHBrFfFKqC05JfqVXoJhuWmOeFI4JBMb4vEdQvKVWCZe2JcGa8G5P4Shzaz1iylodw6VRbW4lN6svVtZzOn+AHLT+C4M4zF9uKwQ7Av+ZRpAZpv2VdkTnz+9yUwB2Dbq4522QmN6WomR4KXXvkTTBPA512vcL/TzPxo2RHUMieDX9rnD68pAhOLpZOuAzHKlajrIsDZIBU/z4onbrYpB2S/oVSrm24fH68TMbZQRtmJM/TjTuqwUDbMNxVYuhqKNG5MSQ+IZpAZM97LlCbd6RmZt7ExqPhqqnmjo8kQWdwConWhMyv6kcauzhGbsZoqlfML3W4fudPCvD+pl4+s04TV+rhKnCi1qDNta+2z45fvfxMd4o8Y6iykX8wx+mSjfNNKk1vgjV4zn69FCcifyJaSZmMiabzfn6hyykjWN2hqU9cHHFBZpDHkiyukZY9wzePhUl+w0SF7FIM9zwiJoDM2h2KsIlUAFpY8eBgbHkhZExw5R3Xbv6KwRaKM/YJJpm/aVamkTJaMaF1/5hqOuhjAeWDdSM/ncFxfkUEP9H2TBnf+CPqwoN+EDj9iO2SqLpjfN/ENsjva5Okx6LzNETqVLbWBgRQ+2N4UPU="
     keep-history: true
     on:
      branch: master          
