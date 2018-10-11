@@ -4,12 +4,15 @@ before_install:
 node_js:
 - node
 script:
-  - npm run lint
-  - npm run test
-  - npm run build
+- npm run lint
+- npm run test
+- npm run build
 deploy:
-  - provider: npm
-    email: skatesam95@gmail.com
-    secure: "qAM0mArQFQG1M88IKBCGi6rGaCKnA2MtcHEq7JUDz/N9W2Mh4ZaQNy0GkyGrWrxuGVO9xSzQVL/3MrxAe/127cD/Bib0cSsWYaNL7bqojZ1+6dVJnJx9Dq5kpLFWYXIehP6dR0E7L8N08x1NvvR9KEZoU0dyIFOPps/rxWeqb/P5OxYBOIx09FXDRQgzlfT/++KNlqG9Sldq1TGaT7sTTZ/7T2InOOWTxmaEP0y7Hs+RueIXY3aBJYFBNp35Fg3gSA7IUivPdyds6Fzz+/OFd7DhF5vEWt2NljpjN+J/YmL3MPnFssHflPTGqlZ3QerstdXgUpTQ4DVhrM/wyETbZcNpIckyCQ4ZwrXdp+znSQ6mLqAwKcdhFWKS97AdAyxqn3sDnHduysR+MTlruGGs9Hxj8oeflTibPQwQ1xsOCfknUC2AS+LWmsMUBCACwfxoRpvZhIVLOqrTBGyGoeF2gx3cwGfkm84rEmjzqGTUOhnasYKjbHVe+Xv5eLmH/o2YgjBHmGMWI6D9sn8lxlDqfOK2eX+YHeVq2cPrZl42Am2F3BdpmxUzO06zOoFe+ovn2dpjezNYFrS4jwyQco5aBzqx7T44ZEk4sKLt9V0Hvv6NkA6b1MBbtHu7j5FTdcuyp5EupVnwlRtw7ewMJTHZzaIcQeWxFMzyEcimpFLaIYo="
-    on:
-      repo: Scoombe/wpmTest     
+  provider: npm
+  email: skatesam95@gmail.com
+  tag: next
+  api_key:
+    secure: mX+oVaJP8CJtcmLyMAN0f0RzCYdyAcJyV43lyJyxH7Z/KuEu5p0QJglSmETHcC8tVvxneyKhlvOW8pNEN1ci1W+S6NT4CuLJg8G3Y4af/97J9XW6DAPJEitl1B+votOJx6T7AK7KWrd1wJYZ+A1QgZOKC3x8QyijFlaW8zN53jzp1SPnBj6lcD785pFhc8daR0UAgcY7jJRsc+tJ/A50C/XVG4LrTav4XTSxXy2+P1XohiA0gj4GmEr3uzirukZWav+v7fLjEIw1BDjJbq4Q+Tw5pCdbi7OXjm3jWVH8Or5RjQUnRQeWyVMzHcdYh4WZoPjlV2T39bCssHa1GQbkHfkrpQzypvtNO7ZuMZ1g5kDVH93xqWe8l+NTsxC7OHlFBsxgFOqaWS1cX6Cwkk9G2oDwlhpyd5MgmNEa2bxS0qhpxmfGl4l96xSBb5BQe9kpBJKpaFIq3o5HFpL1pnuKlXL8KMR7RKlyVfmzg0wcDg3FdFIj27+z5N6Wbv8Y7YoMIWf6l7u5gDMUI/WSC8wWQuNX/40mYJ//pg+ZK72wemBCrljY1RY4fQALuXcuR3fZrksU6b24c1SidiHzIbZzeDB80JUkCvpDqNFEXxxwns8HlVHn0/udj2F/kc58gHWrddk6/gzXUoIQ25v8bpUYn7orDsnauRNJP0xPGqcB6Qo=
+  on:
+    repo: Scoombe/wpmTest
+    branch: fix-travis
