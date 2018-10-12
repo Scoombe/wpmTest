@@ -6,7 +6,8 @@ class wordsPerMinTest {
     /**
      *  @param  {Function} finishedFunction the function that will be called at the end of the stop watch.
      *  @param {number} minutes the amount of minutes the test will be for.
-     *  @param  {boolean} randomChars? if it is random chars or it is random words.
+     *  @param  {Object} Options: { randomChars?: boolean: if using random chars,
+     * displayTestlength: the length of the display test }
      */
     constructor(finishedFunction, minutes, options) {
         // holds the position that the user has got through the words
@@ -41,6 +42,7 @@ class wordsPerMinTest {
         else {
             this.generateText();
         }
+        this.minutes = minutes;
         this.stopwatch = new timer(60000 * minutes, { refreshRateMS: 1 });
         this.stopwatch.onDone(finishedFunction);
     }
