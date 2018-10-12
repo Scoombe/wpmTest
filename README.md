@@ -57,6 +57,9 @@ is the average WPM for the whole all of the completed words
 #### lastTenAvWPM
 is the average WPM for the last ten words
 
+#### minutes
+the amount of minutes the test is running for
+
 ## functions
 
 #### restartTest
