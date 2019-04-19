@@ -43,7 +43,7 @@
     "@types/node": "^10.5.2",
     "chai": "^4.1.2",
     "git-pre-push": "0.0.5",
-    "mocha": "^5.2.0",
+    "mocha": "^6.1.4",
     "pre-commit": "^1.2.2",
     "ts-node": "^5.0.1",
     "tslint": "^5.11.0",
