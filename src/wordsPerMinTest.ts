@@ -1,7 +1,7 @@
 const randomWords = require("random-words");
 const timer = require("timer-stopwatch");
 
-interface ICheckKeyCharReturnObj {
+export interface ICheckKeyCharReturnObj {
     newWord: boolean;
     isCharCorrect: boolean;
     errorText?: string;
