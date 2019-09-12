@@ -6,6 +6,7 @@
     "test": "test"
   },
   "main": "bin/wordsPerMinTest.js",
+  "types": "bin/wordsPerMinTest.d.ts",
   "scripts": {
     "test": "mocha -r ts-node/register test/*.test.ts",
     "build": "tsc -p tsconfig.json",
@@ -20,6 +21,7 @@
     "build",
     "lint"
   ],
+  "prepublish": "tsc",
   "repository": {
     "type": "git",
     "url": "http://www.github.com/scoombe/wpmTest"
